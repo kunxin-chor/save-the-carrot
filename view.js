@@ -141,7 +141,17 @@ window.carrotView = {
     renderGuessWord,
     renderCarrots,
     showMessage,
-    listenForKeypress,
-    listenForGiveUp,
-    listenForWordGuess
+    setupView
 };
+
+/**
+ * Setup all view event listeners in one call
+ * @param {(letter: string) => void} onKeyPress
+ * @param {() => void} onGiveUp
+ * @param {(word: string) => void} onWordGuess
+ */
+function setupView(onKeyPress, onGiveUp, onWordGuess) {
+    listenForKeypress(onKeyPress);
+    listenForGiveUp(onGiveUp);
+    listenForWordGuess(onWordGuess);
+}

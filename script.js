@@ -12,22 +12,26 @@ carrotView.renderGuessWord(guessArr);
 carrotView.renderCarrots(MAX_WRONG, wrongGuesses);
 carrotView.showMessage('');
 
-// Listen for keypresses (students: implement the logic)
-carrotView.listenForKeypress(letter => {
+// Set up all view event listeners in one call
+function handleKeyPress(letter) {
     // Students: implement the guessing logic here
     // Example: show message that logic is not implemented
     carrotView.showMessage('Game logic not implemented. Implement this in script.js!');
-});
+}
 
-// Listen for Give Up button
-carrotView.listenForGiveUp(() => {
+function handleGiveUp() {
     // Reveal the word
     carrotView.renderGuessWord(Array.from(WORD));
     carrotView.showMessage('You gave up! The word was: ' + WORD.toUpperCase());
     // Optionally: disable further input (not implemented here)
-});
+}
 
-// Listen for Guess Word button
-carrotView.listenForWordGuess(wordGuess => {
+function handleWordGuess(wordGuess) {
     // code to guess the word here
-});
+}
+
+carrotView.setupView(
+    handleKeyPress,
+    handleGiveUp,
+    handleWordGuess
+);
