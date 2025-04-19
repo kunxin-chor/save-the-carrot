@@ -115,11 +115,33 @@ function listenForGiveUp(callback) {
     }
 }
 
+/**
+ * Listen for Guess Word button or Enter key in input, and call callback(wordGuess)
+ * @param {(word: string) => void} callback
+ */
+function listenForWordGuess(callback) {
+    const btn = document.getElementById('guess-word-btn');
+    const input = document.getElementById('guess-word-input');
+    if (btn && input) {
+        btn.addEventListener('click', function handler(e) {
+            callback(input.value.trim());
+            input.value = '';
+        });
+        input.addEventListener('keydown', function handler(e) {
+            if (e.key === 'Enter') {
+                callback(input.value.trim());
+                input.value = '';
+            }
+        });
+    }
+}
+
 // Export functions for use in script.js (if using modules, otherwise global)
 window.carrotView = {
     renderGuessWord,
     renderCarrots,
     showMessage,
     listenForKeypress,
-    listenForGiveUp
+    listenForGiveUp,
+    listenForWordGuess
 };

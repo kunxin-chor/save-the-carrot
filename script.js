@@ -26,3 +26,8 @@ carrotView.listenForGiveUp(() => {
     carrotView.showMessage('You gave up! The word was: ' + WORD.toUpperCase());
     // Optionally: disable further input (not implemented here)
 });
+
+// Listen for Guess Word button
+carrotView.listenForWordGuess(wordGuess => {
+    // code to guess the word here
+});
